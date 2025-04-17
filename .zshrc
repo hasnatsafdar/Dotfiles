@@ -1,3 +1,4 @@
+
 # ──────────────────────────────────────────────────────────────────────────────
 # 1) Preferred shell options
 # ──────────────────────────────────────────────────────────────────────────────
@@ -12,9 +13,19 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-
 setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
+
+# ──────────────────────────────────────────────────────────────────────────────
+# fzf key bindings for interactive history and file search
+source <(fzf --zsh)
+
+# Enable fzf's history search and preview
+export FZF_CTRL_R_OPTS="--preview 'echo {}'"
+export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
+
+# Adjust height of fzf window for better UI
+export FZF_HEIGHT=40%
 
 # ──────────────────────────────────────────────────────────────────────────────
 # 2) Aliases & PATH tweaks
@@ -22,7 +33,6 @@ setopt INC_APPEND_HISTORY
 alias ls='eza --icons=always'
 alias ll='eza -alh --icons=always'
 alias lg='lazygit'
-#alias cat='bat'
 alias vim='nvim'
 alias ld='lazydocker'
 export PATH="$HOME/.local/bin:$PATH"
@@ -51,7 +61,6 @@ compinit -u    # skip ownership checks
 # ──────────────────────────────────────────────────────────────────────────────
 # 5) Zinit‑managed plugins
 # ──────────────────────────────────────────────────────────────────────────────
-# (order matters: any completion helpers after compinit, syntax highlighting last)
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 zinit light Aloxaf/fzf-tab
@@ -72,4 +81,3 @@ eval "$(starship init zsh)"
 if [[ -z $TMUX ]]; then
   exec tmux
 fi
- 
