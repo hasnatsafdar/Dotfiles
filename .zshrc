@@ -10,11 +10,19 @@ setopt NO_CASE_GLOB         # make globs case‑insensitive
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # Save History
-HISTFILE=~/.zsh_history
+
 HISTSIZE=10000
-SAVEHIST=10000
-setopt APPEND_HISTORY
-setopt INC_APPEND_HISTORY
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
 
 # ──────────────────────────────────────────────────────────────────────────────
 # fzf key bindings for interactive history and file search
@@ -34,6 +42,12 @@ alias ls='eza --icons=always'
 alias ll='eza -alh --icons=always'
 alias lg='lazygit'
 alias vim='nvim'
+alias mkdir='mkdir -pv'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -iv'
+alias rmdir='rmdir -v'
+alias grep='grep --color=auto'
 alias ld='lazydocker'
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -76,8 +90,13 @@ zinit light zsh-users/zsh-syntax-highlighting
 eval "$(starship init zsh)"
 
 # ──────────────────────────────────────────────────────────────────────────────
-# 7) Auto‑start tmux (only if not already inside one)
+# 7) Auto‑start stuff 
 # ──────────────────────────────────────────────────────────────────────────────
+# tmux (only if not already inside one)
 if [[ -z $TMUX ]]; then
   exec tmux
 fi
+
+# fastfetch
+#pyfiglet -f slant "$(fastfetch -s os --format json | jq -r '.[0].result.name')"
+pyfiglet -f big 'Fedora  Linux' | lolcat
