@@ -8,13 +8,22 @@ setopt NO_CASE_GLOB         # make globs case‑insensitive
 # Make completion matching case‑insensitive too
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
+# Save History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+
 # ──────────────────────────────────────────────────────────────────────────────
 # 2) Aliases & PATH tweaks
 # ──────────────────────────────────────────────────────────────────────────────
 alias ls='eza --icons=always'
 alias ll='eza -alh --icons=always'
 alias lg='lazygit'
-alias cat='bat'
+#alias cat='bat'
+alias vim='nvim'
 alias ld='lazydocker'
 export PATH="$HOME/.local/bin:$PATH"
 
