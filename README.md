@@ -73,3 +73,7 @@ curl https://sh.rustup.rs -sSf | sh
 ```
 cargo install dua-cli
 
+####### This is not completely configured by me (some of it is but) most of it is what i found on the official docs or from other people's customizations and then tinkered it to my liking. The reason i uploaded is so i can organize all of it in one place.
+
+If you can understand configurations here are the **Dotfiles** 
+https://github.com/hasnatsafdar/Dotfiles/ but they are by no means arranged properly or well documented. You'd relly have to help yourself....
