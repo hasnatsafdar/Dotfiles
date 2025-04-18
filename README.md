@@ -1,5 +1,7 @@
 # Dotfiles
 
+![screenshot](screenshot.png)
+
 Sudo dnf install 
 kitty
 zsh
@@ -14,19 +16,6 @@ curl -sS https://starship.rs/install.sh | sh
 zoxide
 // Add this to the end of your config file (usually ~/.zshrc):
 ```
-# Zinit plugin manager
-source ~/.zinit/bin/zinit.zsh
-
-# Plugins
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light Aloxaf/fzf-tab
-zinit light jeffreytse/zsh-vi-mode
-zinit light zdharma-continuum/history-search-multi-word
-zinit light marlonrichert/zsh-autocomplete
-zinit light zsh-users/zsh-completions
-# Starship prompt
-eval "$(starship init zsh)"
 # Zoxide
 eval "$(zoxide init zsh)"
 ```
@@ -84,7 +73,3 @@ curl https://sh.rustup.rs -sSf | sh
 ```
 cargo install dua-cli
 
-
-
-
-![screenshot](screenshot.png)
