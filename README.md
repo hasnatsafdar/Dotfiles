@@ -2,6 +2,7 @@
 
 ![screenshot](screenshot.png)
 ![screenshot2](screenshot2.png)
+![screenshot](screenshot1.png)
 Sudo dnf install 
 kitty
 zsh
