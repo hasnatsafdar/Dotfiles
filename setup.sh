@@ -97,6 +97,22 @@ copy_dotfiles() {
   [ -f "$DOTFILES_DIR/.zshrc" ] && cp "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 }
 
+setup_wallpaper() {
+  WALL_SRC="$DOTFILES_DIR/wallpapers"
+  WALL_DEST="$HOME/.config/wallpapers"
+  TARGET_WALL="wallhaven-5g22q5_3840x2160.png"
+
+  if [ -f "$WALL_SRC/$TARGET_WALL" ]; then
+    mkdir -p "$WALL_DEST"
+    cp "$WALL_SRC/$TARGET_WALL" "$WALL_DEST/"
+    grep -qxF "exec swaybg -i $WALL_DEST/$TARGET_WALL -m fill" ~/.config/sway/config || \
+      echo "exec swaybg -i $WALL_DEST/$TARGET_WALL -m fill" >> ~/.config/sway/config
+    info "Wallpaper '$TARGET_WALL' set using swaybg"
+  else
+    info "Wallpaper not found: $TARGET_WALL"
+  fi
+}
+
 main() {
   echo -e "${GREEN}Hasnat’s Fedora Sway Dotfiles Installer${NC}"
 
@@ -113,10 +129,10 @@ main() {
   ask "Install JetBrainsMono Nerd Font?" && nerd_font_install
 
   ask "Copy dotfiles from repo to ~/.config?" && copy_dotfiles
+  ask "Set wallpaper via swaybg?" && setup_wallpaper
 
   info "Setup complete! You may want to reboot or start using your system now."
   info "Make ZSH default shell: chsh -s $(which zsh)"
 }
 
 main "$@"
-
