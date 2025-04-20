@@ -2,7 +2,7 @@
 
 Welcome to my personal dotfiles! This repository contains the configuration files and setup script for my development environment based on **Fedora Sway Spin**.
 
-> ⚠️ These dotfiles are primarily tested and intended for Fedora Sway Spin only.
+> ⚠️ These dotfiles are primarily intended for Fedora Sway Spin only.
 
 ## 📸 Screenshots
 
