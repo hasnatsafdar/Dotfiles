@@ -1,0 +1,8 @@
+$ ghc --make xmonad.hs -i -ilib -fforce-recomp -main-is main -dynamic -v0 -outputdir /home/hasnatdev/.xmonad/build-x86_64-linux -o /home/hasnatdev/.xmonad/xmonad-x86_64-linux
+
+xmonad.hs:243:1: warning: [-Wtabs]
+    Tab character found here, and in one further location.
+    Suggested fix: Please use spaces instead.
+    |
+243 |         spawnOnce "nitrogen --restore &"
+    | ^^^^^^^^
