@@ -1,4 +1,3 @@
-````markdown
 # Git Setup & Workflow
 
 A concise guide to set up Git and manage repositories after reinstalling your OS.
