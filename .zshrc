@@ -1,64 +1,45 @@
-#     ███████╗ ███████╗ ██╗  ██╗ ██████╗   ██████╗     ██████╗  ██╗   ██╗     ██╗  ██╗  █████╗  ██╗  ██╗ ███╗   ██╗ ███████╗ ████████╗
-#     ╚══███╔╝ ██╔════╝ ██║  ██║ ██╔══██╗ ██╔════╝     ██╔══██╗ ╚██╗ ██╔╝     ██║  ██║ ██╔══██╗ ╚██╗██╔╝ ████╗  ██║ ██╔════╝ ╚══██╔══╝
-#       ███╔╝  ███████╗ ███████║ ██████╔╝ ██║          ██████╔╝  ╚████╔╝      ███████║ ███████║  ╚███╔╝  ██╔██╗ ██║ █████╗      ██║
-#      ███╔╝   ╚════██║ ██╔══██║ ██╔══██╗ ██║          ██╔══██╗   ╚██╔╝       ██╔══██║ ██╔══██║  ██╔██╗  ██║╚██╗██║ ██╔══╝      ██║
-# ██╗ ███████╗ ███████║ ██║  ██║ ██║  ██║ ╚██████╗     ██████╔╝    ██║        ██║  ██║ ██║  ██║ ██╔╝ ██╗ ██║ ╚████║ ███████╗    ██║
-# ╚═╝ ╚══════╝ ╚══════╝ ╚═╝  ╚═╝ ╚═╝  ╚═╝  ╚═════╝     ╚═════╝     ╚═╝        ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚══════╝    ╚═╝
-
-# ╭──────────────────────────────────────────────╮
-# │ Zinit Bootstrap (self-installing + portable) │
-# ╰──────────────────────────────────────────────╯
+# Directory to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-if [[ ! -f "${ZINIT_HOME}/zinit.zsh" ]]; then
-  echo "[zsh] Installing Zinit..." >&2
-  mkdir -p "$(dirname "${ZINIT_HOME}")"
-  if ! command -v git >/dev/null 2>&1; then
-    echo "[zsh] Error: git is not installed. Please install git to use Zinit." >&2
-    return 1
-  fi
-  if ! git clone https://github.com/zdharma-continuum/zinit.git "${ZINIT_HOME}" >/dev/null 2>&1; then
-    echo "[zsh] Error: Failed to clone Zinit repository." >&2
-    return 1
-  fi
-fi
-if [[ -f "${ZINIT_HOME}/zinit.zsh" ]]; then
-  source "${ZINIT_HOME}/zinit.zsh"
-else
-  echo "[zsh] Error: Zinit not found at ${ZINIT_HOME}/zinit.zsh" >&2
+
+# Download Zinit, if not done already
+if [ ! -d "$ZINIT_HOME" ]; then
+	mkdir -p "$(dirname $ZINIT_HOME)"
+	git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
-# ╭──────────────────────────────────────────────╮
-# │ History and Core Options                     │
-# ╰──────────────────────────────────────────────╯
-# History Settings
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+PATH="$HOME/.go/bin:$PATH"
 
-# History Options
-setopt EXTENDED_HISTORY
-setopt INC_APPEND_HISTORY
-setopt SHARE_HISTORY
-setopt HIST_IGNORE_DUPS
-setopt HIST_SAVE_NO_DUPS
-setopt HIST_REDUCE_BLANKS
-setopt HIST_IGNORE_SPACE
-# ╭──────────────────────────────────────────────╮
-# │ Aliases                                      │
-# ╰──────────────────────────────────────────────╯
-if command -v eza >/dev/null 2>&1; then
-  alias ls='eza --icons=always'
-  alias l='eza -lh --icons --group-directories-first --color=always'
-  alias la='eza -a --icons --group-directories-first --color=always'
-  alias ll='eza -lah --icons --group-directories-first --color=always'
-fi
+# Source/Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Zsh Plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+# Load completions
+autoload -U compinit && compinit
+
+zinit cdreplay -q
+
+# Source Prompt
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+
+# Aliases
+alias ls='eza --icons=always'
+alias l='eza -lh --icons --group-directories-first --color=always'
+alias la='eza -a --icons --group-directories-first --color=always'
+alias ll='eza -lah --icons --group-directories-first --color=always'
 alias c='clear'
 alias vim='nvim'
 alias vi='nvim'
-alias pm='sudo pacman -S'
-alias pmnc='sudo pacman -S --noconfirm'
 alias lg='lazygit'
+alias ld='lazydocker'
 alias ff='fastfetch --logo debian -c /usr/share/fastfetch/presets/examples/10.jsonc'
+#alias pm='sudo pacman -S'
+#alias pmnc='sudo pacman -S --noconfirm'
+
 # Yazi setup
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -68,33 +49,31 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-# ╭──────────────────────────────────────────────╮
-# │ Vim Keybindings                              │
-# ╰──────────────────────────────────────────────╯
+# Keybindings
+#bindkey '`' autosuggest-accept
 bindkey -v
-export KEYTIMEOUT=1
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
 
-# ╭──────────────────────────────────────────────╮
-# │ Plugins                                      │
-# ╰──────────────────────────────────────────────╯
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-syntax-highlighting
-#zinit light Aloxaf/fzf-tab
+# History
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
-# ╭──────────────────────────────────────────────╮
-# │ Starship Prompt                              │
-# ╰──────────────────────────────────────────────╯
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --icons=always $realpath'
+zstyle 'completion:*' menu no
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --icons=always $realpath'
 
-eval "$(starship init zsh)"
-
-# Fancy ASCII
-whoami() {
-  local name
-  name=$(command whoami)
-  oh-my-logo "$name" ocean --filled --letter-spacing 1
-}
-
-ohmylogo() {
-  oh-my-logo "$*" ocean --filled --letter-spacing 1
-}
+# Shell integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"

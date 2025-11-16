@@ -1,5 +1,4 @@
-
-# i3 config file (v4)
+# i3 config file (by Haxnet)
 
 set $mod Mod4
 
@@ -16,8 +15,8 @@ exec --no-startup-id dbus-launch dunst
 #exec --no-startup-id xrandr --output DP-0 --mode 1920x1080
 
 # Gaps
-gaps inner 5px
-gaps outer 5px
+gaps inner 7px
+gaps outer 7px
 
 # Only enable outer gaps when there is exactly one window or split container on the workspace.
 smart_gaps inverse_outer
@@ -52,8 +51,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+q kill
 
 # App Launcher
-bindsym $mod+space exec rofi -show drun
-
+bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # Change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -151,4 +149,4 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Wallpaper
-exec --no-startup-id feh --bg-scale /home/haxnet/Pictures/wallhaven-ly9qzq_1920x1080.png
+exec --no-startup-id feh --bg-scale /home/haxnet/Dotfiles/Wallpapers/minimalist-dark-mountain.jpg

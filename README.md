@@ -10,7 +10,7 @@
 
 ```bash
 sudo apt install -y \
-  i3 xorg psmisc build-essential dbus-x11 libnotify-bin rsync stow \
+  i3 xorg psmisc build-essential dbus-x11 libnotify-bin brightnessctl rsync stow flameshot \
   pipewire pipewire-audio-client-libraries wireplumber pipewire-pulse pulseaudio-utils \
   fastfetch polybar rofi feh \
   nodejs npm lynx tmux zsh fzf zoxide eza \
@@ -115,7 +115,7 @@ sudo apt install yazi
 wget https://github.com/neovim/neovim/releases/download/v0.11.4/nvim-linux-x86_64.appimage
 mv nvim-linux-x86_64.appimage nvim
 chmod +x nvim
-sudo mv /usr/local/bin
+sudo mv nvim /usr/local/bin
 ```
 
 ---
