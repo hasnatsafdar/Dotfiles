@@ -10,16 +10,17 @@
 
 ```bash
 sudo apt install -y \
-  i3 xorg ly psmisc build-essential dbus-x11 libnotify-bin rsync stow \
+  i3 xorg psmisc build-essential dbus-x11 libnotify-bin rsync stow \
   pipewire pipewire-audio-client-libraries wireplumber pipewire-pulse pulseaudio-utils \
   fastfetch polybar rofi feh \
   nodejs npm lynx tmux zsh fzf zoxide eza \
   mpv qutebrowser thunar \
-  lazygit lazydocker \
+  lazygit \
   rxvt-unicode xsel lxappearance scrot caffeine \
   git wget curl hsetroot btop \
   ffmpeg 7zip unzip jq poppler-utils fd-find ripgrep imagemagick
 ```
+ly lazydocker
 
 ---
 
