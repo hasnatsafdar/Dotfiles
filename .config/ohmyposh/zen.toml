@@ -1,0 +1,44 @@
+
+
+version = 3
+final_space = true
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    type = 'path'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'blue'
+#    template = '{{ .Path}}'
+
+    [blocks.segments.properties]
+      style = 'full'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    type = 'text'
+    style = 'plain'
+    foreground_templates = [
+	"{{if gt .Code 0}}red{{end}}",
+	"{{if eq .Code 0}}magenta{{end}}",
+	]
+    background = 'transparent'
+    template = " 󰳟"
+
+# [transient_prompt]
+#   foreground_templates = [
+# 	"{{if gt .Code 0}}red{{end}}",
+# 	"{{if eq .Code 0}}magenta{{end}}",
+# 	]
+#
+#   background = "transparent"
+#   template = " 󰳟"

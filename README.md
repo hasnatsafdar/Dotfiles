@@ -162,19 +162,18 @@ systemctl --user enable --now pipewire pipewire-pulse wireplumber
 
 ---
 
-## Set Up Zsh with Zinit and Starship (optional)
+## Set Up Zsh with Zinit and Oh-my-posh (optional)
 
 ```bash
 #### Install Zinit
 bash -c "$(curl -fsSL https://git.io/zinit-install)"
+#### Install Oh-my-posh
+curl -s https://ohmyposh.dev/install.sh | bash -s
 
-#### Install Starship prompt
-curl -sS https://starship.rs/install.sh | sh
 
 #### Add to ~/.zshrc
-echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+echo 'eval "$(oh-my-posh init zsh)"' >> ~/.zshrc
 ```
-
 ---
 
 ## Set i3 as the Default Session
