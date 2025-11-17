@@ -16,7 +16,7 @@ exec --no-startup-id dbus-launch dunst
 
 # Gaps
 gaps inner 7px
-gaps outer 7px
+gaps outer 5px
 
 # Only enable outer gaps when there is exactly one window or split container on the workspace.
 smart_gaps inverse_outer
@@ -33,6 +33,10 @@ bindsym $mod+Ctrl+i exec --no-startup-id pgrep caffeine && pkill caffeine && not
 
 # Hide borders
 default_border none
+
+client.focused          #5f5f5f #ff0000 #000000
+client.unfocused        #222222 #888888 #444444
+client.focused_inactive #444444 #444444 #444444
 
 # Bar
 exec_always --no-startup-id ~/.config/polybar/./launch.sh
@@ -52,6 +56,7 @@ bindsym $mod+q kill
 
 # App Launcher
 bindcode $mod+40 exec "rofi -modi drun,run -show drun"
+
 # Change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down

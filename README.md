@@ -1,6 +1,6 @@
 # Dotfiles for Debian-i3wm
 
-![Screenshot](Screenshots/screenshot.png)
+![Screenshot](Pictures/Screenshots/screenshot.png)
 
 ---
 
