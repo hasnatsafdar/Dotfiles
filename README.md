@@ -3,6 +3,7 @@
 ![Screenshot](Screenshots/screenshot.png)
 
 ---
+- [ ] Arrange the file in a nice order.
 
 # Debian Minimal Setup Script
 
@@ -20,8 +21,43 @@ sudo apt install -y \
   git wget curl hsetroot btop \
   ffmpeg 7zip unzip jq poppler-utils fd-find ripgrep imagemagick
 ```
-ly lazydocker
+- [ ] Make a script for installing packages
+- [ ] Install Option for ly and lazydocker
+---
 
+# ⚙️ Post-Install Configuration
+
+## Enable Display Manager (ly)
+
+```bash
+sudo systemctl enable --now ly
+```
+
+```bash
+systemctl --user enable --now pipewire pipewire-pulse wireplumber
+```
+
+---
+
+## Set Up Zsh with Zinit and Oh-my-posh (optional)
+
+```bash
+#### Install Zinit
+bash -c "$(curl -fsSL https://git.io/zinit-install)"
+#### Install Oh-my-posh
+curl -s https://ohmyposh.dev/install.sh | bash -s
+
+
+#### Add to ~/.zshrc
+echo 'eval "$(oh-my-posh init zsh)"' >> ~/.zshrc
+```
+---
+
+## Set i3 as the Default Session
+
+```bash
+echo "exec i3" > ~/.xinitrc
+```
 ---
 
 ## 📥 Additional Software
@@ -145,39 +181,22 @@ wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/do
 && rm JetBrainsMono.zip \
 && fc-cache -fv
 ```
-
----
-
-# ⚙️ Post-Install Configuration
-
-## Enable Display Manager (ly)
-
+### **VM Stuff**
 ```bash
-sudo systemctl enable --now ly
+sudo apt install qemu-kvm qemu-system qemu-utils python3 python3-pip libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager -y
 ```
 
 ```bash
-systemctl --user enable --now pipewire pipewire-pulse wireplumber
+sudo virsh net-start default
+sudo virsh net-autostart default
 ```
-
----
-
-## Set Up Zsh with Zinit and Oh-my-posh (optional)
 
 ```bash
-#### Install Zinit
-bash -c "$(curl -fsSL https://git.io/zinit-install)"
-#### Install Oh-my-posh
-curl -s https://ohmyposh.dev/install.sh | bash -s
-
-
-#### Add to ~/.zshrc
-echo 'eval "$(oh-my-posh init zsh)"' >> ~/.zshrc
+sudo usermod -aG libvirt $USER
+sudo usermod -aG libvirt-qemu $USER
+sudo usermod -aG kvm $USER
+sudo usermod -aG input $USER
+sudo usermod -aG disk $USER
 ```
----
 
-## Set i3 as the Default Session
 
-```bash
-echo "exec i3" > ~/.xinitrc
-```

@@ -42,3 +42,5 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
 #
 #   background = "transparent"
 #   template = " 󰳟"
+
+# TODO work in progress

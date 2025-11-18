@@ -14,7 +14,9 @@ font pango:JetBrains Mono Nerd Font 8
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
-# TODO Study all this stuff down here
+exec --no-startup-id setxkbmap -option caps:escape
+# TODO Study all this stuff up here
+# Setup Bluetooth (blueberry) and Wifi (nmcli) connection stuff
 
 #Notification
 exec --no-startup-id dbus-launch dunst
@@ -25,9 +27,9 @@ gaps inner 7px
 gaps outer 5px
 
 # Only enable outer gaps when there is exactly one window or split container on the workspace.
-smart_gaps inverse_outer
+smart_gaps on
 
-# Use pactl to adjust volume in PulseAudio.
+# Use pactl to adjust volume in Pipewire.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
@@ -39,8 +41,14 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym $mod+Ctrl+i exec --no-startup-id pgrep caffeine && pkill caffeine && notify-send "☕ Caffeine OFF" || (caffeine & notify-send "☕ Caffeine ON")
 # TODO the above thing is not thinging
 
+# TODO Bind some commonly used chrome webapps to keys and set important ones to autostart on start.
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
 # Hide borders
-default_border none
+#default_border none
+hide_edge_borders smart
 # TODO Get some borders
 
 # Bar
@@ -50,9 +58,6 @@ exec_always --no-startup-id ~/.config/polybar/./launch.sh
 # Browser
 bindsym $mod+Shift+b --no-startup-id exec qutebrowser
 bindsym $mod+b exec --no-startup-id flatpak run com.google.Chrome
-
-# GUI File Manager
-bindsym $mod+e exec --no-startup-id thunar
 
 # Docs & notes stuff
 bindsym $mod+n exec obsidian
@@ -105,6 +110,11 @@ bindsym $mod+f fullscreen toggle
 
 # Toggle tiling / floating
 bindsym $mod+t floating toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
 
 # Change focus between tiling / floating windows
 bindsym $mod+Shift+t focus mode_toggle
