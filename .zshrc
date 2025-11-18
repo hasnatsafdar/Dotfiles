@@ -106,3 +106,5 @@ whoami() {
 oml() {
   oh-my-logo "$*" ocean --filled --letter-spacing 1
 }
+
+ff

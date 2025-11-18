@@ -1,6 +1,6 @@
 # Dotfiles for Debian-i3wm
 
-![Screenshot](Pictures/Screenshots/screenshot.png)
+![Screenshot](Screenshots/screenshot.png)
 
 ---
 
@@ -10,7 +10,7 @@
 
 ```bash
 sudo apt install -y \
-  i3 xorg psmisc build-essential dbus-x11 libnotify-bin brightnessctl rsync stow flameshot \
+  i3 xorg psmisc network-manager build-essential dbus-x11 libnotify-bin brightnessctl rsync stow flameshot \
   pipewire pipewire-audio-client-libraries wireplumber pipewire-pulse pulseaudio-utils \
   fastfetch polybar rofi feh \
   nodejs npm lynx tmux zsh fzf zoxide eza \

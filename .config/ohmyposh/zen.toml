@@ -29,10 +29,10 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     style = 'plain'
     foreground_templates = [
 	"{{if gt .Code 0}}red{{end}}",
-	"{{if eq .Code 0}}magenta{{end}}",
+	"{{if eq .Code 0}}white{{end}}",
 	]
     background = 'transparent'
-    template = " 󰳟"
+    template = "  "
 
 # [transient_prompt]
 #   foreground_templates = [
