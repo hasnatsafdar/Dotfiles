@@ -1,4 +1,4 @@
-# Quick one-page doc — Install & verify NVIDIA **470xx** for (but not limited to) Thinkpad W530 (Quadro K1000M) — copy/paste ready
+# Quick one-page doc — Install & verify NVIDIA **470xx** for (but not limited to) Thinkpad W530 (Quadro K1000M)
 ---
 
 ## Preflight
