@@ -16,18 +16,17 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id setxkbmap -option caps:escape
 # TODO Study all this stuff up here
-# Setup Bluetooth (blueberry) and Wifi (nmcli) connection stuff
-
+# TODO Setup Bluetooth (blueberry) and Wifi (nmcli) connection stuff
+# TODO sxhkd stuff for pro keybinds
 #Notification
 exec --no-startup-id dbus-launch dunst
 #exec --no-startup-id xrandr --output DP-0 --mode 1920x1080
+# TODO exec on boot the todo app, the calender and the email.
 
 # Gaps
-gaps inner 7px
-gaps outer 5px
-
-# Only enable outer gaps when there is exactly one window or split container on the workspace.
-smart_gaps on
+gaps inner 8px
+gaps outer 8px
+#smart_gaps on
 
 # Use pactl to adjust volume in Pipewire.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -47,16 +46,16 @@ bindsym $mod+Ctrl+i exec --no-startup-id pgrep caffeine && pkill caffeine && not
 floating_modifier $mod
 
 # Hide borders
-#default_border none
-hide_edge_borders smart
-# TODO Get some borders
+default_border pixel 1
+default_floating_border pixel 1
+#hide_edge_borders smart
 
 # Bar
-exec_always --no-startup-id ~/.config/polybar/./launch.sh
+exec_always exec --no-startup-id \$HOME/.config/polybar/launch.sh
 # TODO rice it a bit
 
 # Browser
-bindsym $mod+Shift+b --no-startup-id exec qutebrowser
+bindsym $mod+Shift+b exec --no-startup-id qutebrowser
 bindsym $mod+b exec --no-startup-id flatpak run com.google.Chrome
 
 # Docs & notes stuff
@@ -73,12 +72,12 @@ bindsym Print exec flameshot gui
 
 # Launch Terminal
 bindsym $mod+Return exec alacritty
-
+bindsym $mod+Shift+Return exec kitty
 # Kill window
 bindsym $mod+q kill
 
 # App Launcher
-bindcode $mod+40 exec "rofi -modi drun,run -show drun"
+bindcode $mod+40 exec "rofi -modi drun,run -show drun -show-icons"
 # TODO this needs some customization
 
 # Change focus
@@ -142,6 +141,8 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+
+# TODO use mod shift + 1,2,3 or whatever to access more workspaces
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
