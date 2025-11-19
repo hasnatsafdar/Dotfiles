@@ -14,8 +14,13 @@ font pango:JetBrains Mono Nerd Font 8
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
-exec --no-startup-id setxkbmap -option caps:escape
+
 # TODO Study all this stuff up here
+exec --no-startup-id setxkbmap -option caps:escape
+# Bar
+exec_always exec --no-startup-id ~/.config/polybar/launch.sh
+# TODO rice it a bit
+
 # TODO Setup Bluetooth (blueberry) and Wifi (nmcli) connection stuff
 # TODO sxhkd stuff for pro keybinds
 #Notification
@@ -50,10 +55,6 @@ default_border pixel 1
 default_floating_border pixel 1
 #hide_edge_borders smart
 
-# Bar
-exec_always exec --no-startup-id \$HOME/.config/polybar/launch.sh
-# TODO rice it a bit
-
 # Browser
 bindsym $mod+Shift+b exec --no-startup-id qutebrowser
 bindsym $mod+b exec --no-startup-id flatpak run com.google.Chrome
@@ -62,10 +63,12 @@ bindsym $mod+b exec --no-startup-id flatpak run com.google.Chrome
 bindsym $mod+n exec obsidian
 
 # Brightness (brightnessctl)
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
-# TODO set a notification daemon for this
+bindsym XF86MonBrightnessUp exec --no-startup-id "brightnessctl set +5%; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 5%-; notify-send 'brightness down'"
+
+# TODO set a notification daemon % for this
 # TODO redshift or something for nightlight
+# TODO something on top to tell laptop temperature
 
 # Screenshot
 bindsym Print exec flameshot gui
