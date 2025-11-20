@@ -60,6 +60,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --icons=always $realpat
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(register-python-argcomplete pipx)"
 
 # ╭──────────────────────────────────────────────╮
 # │ Prompt                                       │
@@ -112,3 +113,6 @@ whoami() {
 oml() {
   oh-my-logo "$*" ocean --filled --letter-spacing 1
 }
+
+# Created by `pipx` on 2025-11-20 17:01:47
+export PATH="$PATH:/home/haxnet/.local/bin"
