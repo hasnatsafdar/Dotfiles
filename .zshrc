@@ -19,6 +19,8 @@ if [ ! -d "$ZINIT_HOME" ]; then
 fi
 
 PATH="$HOME/.go/bin:$PATH"
+# Created by `pipx`
+export PATH="$PATH:/home/haxnet/.local/bin"
 
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
@@ -69,6 +71,7 @@ eval "$(register-python-argcomplete pipx)"
 if ! command -v oh-my-posh >/dev/null 2>&1; then
     echo "Installing oh-my-posh..."
     curl -s https://ohmyposh.dev/install.sh | bash -s
+    sudo mv ~/.local/bin/oh-my-posh /usr/local/bin/oh-my-posh
 fi
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
@@ -113,6 +116,3 @@ whoami() {
 oml() {
   oh-my-logo "$*" ocean --filled --letter-spacing 1
 }
-
-# Created by `pipx` on 2025-11-20 17:01:47
-export PATH="$PATH:/home/haxnet/.local/bin"
