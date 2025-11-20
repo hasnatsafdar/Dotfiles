@@ -64,6 +64,11 @@ eval "$(zoxide init --cmd cd zsh)"
 # ╭──────────────────────────────────────────────╮
 # │ Prompt                                       │
 # ╰──────────────────────────────────────────────╯
+# Install oh-my-posh if missing
+if ! command -v oh-my-posh >/dev/null 2>&1; then
+    echo "Installing oh-my-posh..."
+    curl -s https://ohmyposh.dev/install.sh | bash -s
+fi
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
 # ╭──────────────────────────────────────────────╮
