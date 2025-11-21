@@ -11,7 +11,7 @@
 set $mod Mod4
 
 # Font
-font pango:JetBrains Mono Nerd Font 8
+font pango:JetBrains Mono Nerd Font 8, Ionicons 9, Poppins Regular 9
 
 # Autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -21,7 +21,7 @@ exec --no-startup-id nm-applet
 # TODO Study all this stuff up here
 exec --no-startup-id setxkbmap -option caps:escape
 # Bar
-exec_always exec --no-startup-id ~/.config/polybar/launch.sh
+# exec_always exec --no-startup-id ~/.config/polybar/launch.sh
 # TODO rice it a bit
 
 # TODO Setup Bluetooth (blueberry) and Wifi (nmcli) connection stuff
@@ -34,7 +34,7 @@ exec --no-startup-id dbus-launch dunst
 # Gaps
 gaps inner 8px
 gaps outer 8px
-#smart_gaps on
+smart_gaps on
 
 # Use pactl to adjust volume in Pipewire.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -42,6 +42,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+# TODO Set volume limit to not exceed 100%
 # TODO a notification daemon to show volume increased or dicreased
 
 # Toggle caffeine on/off
@@ -83,7 +84,8 @@ bindsym $mod+Shift+Return exec kitty
 bindsym $mod+q kill
 
 # App Launcher
-bindcode $mod+40 exec "rofi -modi drun,run -show drun -show-icons"
+#bindcode $mod+40 exec "rofi -modi drun,run -show drun -show-icons"
+bindsym $mod+d exec "rofi -show drun -modi drun,run -show-icons -font 'Poppins 9' -color-window '#141c21,#93a1a1,#289c93' -color-normal '#141c21,#93a1a1,#141c21,#93a1a1,#289c93' -lines 10 -bw 0 -padding 10"
 # TODO this needs some customization
 
 # Change focus
@@ -192,3 +194,34 @@ bindsym $mod+r mode "resize"
 exec --no-startup-id feh --bg-scale /home/haxnet/Dotfiles/Wallpapers/the-sparkles.png
 # TODO Maybe a cool wallpaper picker
 # TODO Picom and Piwall would be nice
+
+# Bar
+bar {
+	status_command i3status
+	position top
+	workspace_min_width 24
+	padding 2px 8px 2px 8px
+	strip_workspace_numbers yes
+
+	colors {
+	background #141c21
+	statusline #141c21
+	separator #141c21
+
+	# colour of border, background, and text
+	focused_workspace #141c21 #d12f2c #93a1a1
+	active_workspace #141c21 #141c21 #93a1a1
+	inactive_workspace #141c21 #141c21 #93a1a1
+	urgent_workspace #141c21 #b08500 #93a1a1
+	}
+}
+
+# Under construction
+
+# colour of border, background, text, indicator, and child_border
+client.focused #d12f2c #263640 #93a1a1 #696ebf #2587cc1
+client.focused_inactive #263640 #b08500 #93a1a1 #263640 #263640
+client.unfocused #263640 #b08500 #93a1a1 #263640 #263640
+client.urgent #263640 #b08500 #93a1a1 #263640 #263640
+client.placeholder #263640 #b08500 #93a1a1 #263640 #263640
+client.background #263640

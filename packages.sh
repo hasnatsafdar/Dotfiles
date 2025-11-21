@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -euo pipefail
 # ----------------------------
 # System Update
 # ----------------------------
@@ -11,7 +12,7 @@ sudo apt update && sudo apt upgrade -y
 # ----------------------------
 echo "Installing core packages..."
 sudo apt install -y \
-  build-essential git wget curl unzip 7zip \
+  build-essential git wget curl unzip 7zip cmake \
   fd-find ripgrep ncdu hsetroot btop \
   python3 python3-pip pipx \
   nodejs npm \
@@ -140,5 +141,15 @@ sudo usermod -aG libvirt-qemu $USER
 sudo usermod -aG kvm $USER
 sudo usermod -aG input $USER
 sudo usermod -aG disk $USER
+
+# ----------------------------
+# Transmission
+# ----------------------------
+git clone --recurse-submodules https://github.com/transmission/transmission Transmission
+cd Transmission
+cmake -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo
+cd build
+cmake --build .
+sudo cmake --install .
 
 echo "All done! Reboot recommended."
