@@ -3,23 +3,14 @@
   "blocks": [
     {
       "segments": [
-        {
-          "foreground": "#00C5C7",
-          "properties": {
-            "time_format": "15:04:05"
-          },
-          "style": "plain",
-          "template": " {{ .CurrentDate | date .Format }} ",
-          "type": "time"
-        }
-      ],
+     ],
       "type": "rprompt"
     },
     {
       "alignment": "left",
       "segments": [
         {
-          "foreground": "#77E4F7",
+          "foreground": "#FFD300",
           "properties": {
             "style": "full"
           },
@@ -28,13 +19,13 @@
           "type": "path"
         },
         {
-          "foreground": "#FFE700",
+          "foreground": "#FFD300",
           "style": "plain",
           "template": "{{ .HEAD }} ",
           "type": "git"
         },
         {
-          "foreground": "#43D426",
+          "foreground": "#FFE700",
           "style": "plain",
           "template": "\u276f ",
           "type": "text"

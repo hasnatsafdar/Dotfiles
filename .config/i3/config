@@ -54,8 +54,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # Toggle caffeine on/off
 bindsym $mod+Ctrl+i exec --no-startup-id pgrep caffeine && pkill caffeine && notify-send "☕ Caffeine OFF" || (caffeine & notify-send "☕ Caffeine ON")
-# TODO the above thing is not thinging
-
+# TODO I doubt that caffiene is not working with this
 # TODO Bind some commonly used chrome webapps to keys and set important ones to autostart on start.
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -67,8 +66,9 @@ default_floating_border pixel 3
 hide_edge_borders smart
 
 # Browser
+bindsym $mod+b exec --no-startup-id LibreWolf
 bindsym $mod+Shift+b exec --no-startup-id qutebrowser
-bindsym $mod+b exec --no-startup-id flatpak run com.google.Chrome
+bindsym $mod+Shift+Ctrl+b exec --no-startup-id flatpak run com.google.Chrome
 
 # Docs & notes stuff
 bindsym $mod+n exec obsidian
@@ -84,8 +84,8 @@ bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 5%-; notif
 bindsym Print exec flameshot gui
 
 # Launch Terminal
-bindsym $mod+Return exec alacritty
-bindsym $mod+Shift+Return exec kitty
+bindsym $mod+Return exec kitty
+bindsym $mod+Shift+Return exec alacritty
 # Kill window
 bindsym $mod+q kill
 
@@ -228,12 +228,10 @@ bar {
 	}
 }
 
-# Under construction
-
-# colour of border, background, text, indicator, and child_border
-client.focused #d12f2c #263640 #93a1a1 #696ebf #2587cc1
-client.focused_inactive #263640 #b08500 #93a1a1 #263640 #263640
-client.unfocused #263640 #b08500 #93a1a1 #263640 #263640
-client.urgent #263640 #b08500 #93a1a1 #263640 #263640
-client.placeholder #263640 #b08500 #93a1a1 #263640 #263640
-client.background #263640
+# format: client.focused border background text indicator child_border
+client.focused          #E6C200 #000000 #FFD300 #FFD300 #FFD300
+client.focused_inactive #000000 #000000 #FFD300 #000000 #000000
+client.unfocused        #000000 #000000 #FFD300 #000000 #000000
+client.urgent           #FFD300 #000000 #000000 #FFD300 #FFD300
+client.placeholder      #000000 #000000 #FFD300 #000000 #000000
+client.background       #000000
