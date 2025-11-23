@@ -74,6 +74,7 @@ if ! command -v oh-my-posh >/dev/null 2>&1; then
     sudo mv ~/.local/bin/oh-my-posh /usr/local/bin/oh-my-posh
 fi
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+#eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/powerlevel10k_lean.omp.json)" 
 
 # ╭──────────────────────────────────────────────╮
 # │ Aliases                                      │

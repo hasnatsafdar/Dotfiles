@@ -20,12 +20,14 @@ sudo apt install -y \
   i3 xorg lightdm \
   dbus-x11 libnotify-bin \
   psmisc network-manager \
+  ffmpeg poppler-utils imagemagick calcurse neomutt \
   brightnessctl rsync stow flameshot \
-  pipewire pipewire-audio-client-libraries wireplumber pipewire-pulse pulseaudio-utils \
   fastfetch polybar rofi feh \
   mpv qutebrowser thunar \
   rxvt-unicode xsel lxappearance scrot caffeine \
-  ffmpeg poppler-utils imagemagick calcurse neomutt
+  pipewire pipewire-audio-client-libraries wireplumber pipewire-pulse pulseaudio-utils 
+
+systemctl --user enable --now pipewire pipewire-pulse wireplumber
 
 # ----------------------------
 # Python Tools

@@ -1,11 +1,18 @@
-#;===========================================================================================================================================================;
-#; ██╗ ██████╗       ██████╗  ██████╗  ███╗   ██╗ ███████╗ ██╗  ██████╗      ██████╗  ██╗   ██╗     ██╗  ██╗  █████╗  ██╗  ██╗ ███╗   ██╗ ███████╗ ████████╗ ;
-#; ██║ ╚════██╗     ██╔════╝ ██╔═══██╗ ████╗  ██║ ██╔════╝ ██║ ██╔════╝      ██╔══██╗ ╚██╗ ██╔╝     ██║  ██║ ██╔══██╗ ╚██╗██╔╝ ████╗  ██║ ██╔════╝ ╚══██╔══╝ ;
-#; ██║  █████╔╝     ██║      ██║   ██║ ██╔██╗ ██║ █████╗   ██║ ██║  ███╗     ██████╔╝  ╚████╔╝      ███████║ ███████║  ╚███╔╝  ██╔██╗ ██║ █████╗      ██║    ;
-#; ██║  ╚═══██╗     ██║      ██║   ██║ ██║╚██╗██║ ██╔══╝   ██║ ██║   ██║     ██╔══██╗   ╚██╔╝       ██╔══██║ ██╔══██║  ██╔██╗  ██║╚██╗██║ ██╔══╝      ██║    ;
-#; ██║ ██████╔╝     ╚██████╗ ╚██████╔╝ ██║ ╚████║ ██║      ██║ ╚██████╔╝     ██████╔╝    ██║        ██║  ██║ ██║  ██║ ██╔╝ ██╗ ██║ ╚████║ ███████╗    ██║    ;
-#; ╚═╝ ╚═════╝       ╚═════╝  ╚═════╝  ╚═╝  ╚═══╝ ╚═╝      ╚═╝  ╚═════╝      ╚═════╝     ╚═╝        ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚══════╝    ╚═╝    ;
-#;===========================================================================================================================================================;
+# =================================================================================;
+# ██╗ ██████╗       ██████╗  ██████╗  ███╗   ██╗ ███████╗ ██╗  ██████╗             ;
+# ██║ ╚════██╗     ██╔════╝ ██╔═══██╗ ████╗  ██║ ██╔════╝ ██║ ██╔════╝             ;
+# ██║  █████╔╝     ██║      ██║   ██║ ██╔██╗ ██║ █████╗   ██║ ██║  ███╗            ;
+# ██║  ╚═══██╗     ██║      ██║   ██║ ██║╚██╗██║ ██╔══╝   ██║ ██║   ██║            ;
+# ██║ ██████╔╝     ╚██████╗ ╚██████╔╝ ██║ ╚████║ ██║      ██║ ╚██████╔╝            ;
+# ╚═╝ ╚═════╝       ╚═════╝  ╚═════╝  ╚═╝  ╚═══╝ ╚═╝      ╚═╝  ╚═════╝             ;
+# ---------------------------------------------------------------------------------;
+# ██████╗  ██╗   ██╗     ██╗  ██╗  █████╗  ██╗  ██╗ ███╗   ██╗ ███████╗ ████████╗  ;
+# ██╔══██╗ ╚██╗ ██╔╝     ██║  ██║ ██╔══██╗ ╚██╗██╔╝ ████╗  ██║ ██╔════╝ ╚══██╔══╝  ;
+# ██████╔╝  ╚████╔╝      ███████║ ███████║  ╚███╔╝  ██╔██╗ ██║ █████╗      ██║     ;
+# ██╔══██╗   ╚██╔╝       ██╔══██║ ██╔══██║  ██╔██╗  ██║╚██╗██║ ██╔══╝      ██║     ;
+# ██████╔╝    ██║        ██║  ██║ ██║  ██║ ██╔╝ ██╗ ██║ ╚████║ ███████╗    ██║     ;
+# ╚═════╝     ╚═╝        ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚══════╝    ╚═╝     ;
+# =================================================================================;
 
 # sets the window key to the super/mod key
 set $mod Mod4
@@ -70,9 +77,8 @@ bindsym $mod+n exec obsidian
 bindsym XF86MonBrightnessUp exec --no-startup-id "brightnessctl set +5%; notify-send 'brightness up'"
 bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 5%-; notify-send 'brightness down'"
 
-# TODO set a notification daemon % for this
+# TODO set a notification daemon % for this and shouldn't popup multiple times.
 # TODO redshift or something for nightlight
-# TODO something on top to tell laptop temperature
 
 # Screenshot
 bindsym Print exec flameshot gui
@@ -84,9 +90,13 @@ bindsym $mod+Shift+Return exec kitty
 bindsym $mod+q kill
 
 # App Launcher
+bindsym $mod+d exec i3-dmenu-desktop --dmenu="dmenu -i -b \
+    -fn 'JetBrainsMono Nerd Font:size=10' \
+    -nb '#000000' -nf '#FFEA00' \
+    -sb '#FFEA00' -sf '#000000'"
+
 #bindcode $mod+40 exec "rofi -modi drun,run -show drun -show-icons"
-bindsym $mod+d exec "rofi -show drun -modi drun,run -show-icons -font 'Poppins 9' -color-window '#141c21,#93a1a1,#289c93' -color-normal '#141c21,#93a1a1,#141c21,#93a1a1,#289c93' -lines 10 -bw 0 -padding 10"
-# TODO this needs some customization
+#bindsym $mod+d exec "rofi -show drun -modi drun,run -show-icons -font 'Poppins 9' -color-window '#141c21,#93a1a1,#289c93' -color-normal '#141c21,#93a1a1,#141c21,#93a1a1,#289c93' -lines 10 -bw 0 -padding 10"
 
 # Change focus
 bindsym $mod+h focus left
@@ -191,11 +201,13 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Wallpaper
-exec --no-startup-id feh --bg-scale /home/haxnet/Dotfiles/Wallpapers/the-sparkles.png
+exec --no-startup-id feh --bg-scale /home/haxnet/Dotfiles/Wallpapers/minimalist-yello-tree.png
 # TODO Maybe a cool wallpaper picker
 # TODO Picom and Piwall would be nice
 
 # Bar
+
+
 bar {
 	status_command i3status
 	position top
