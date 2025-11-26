@@ -23,13 +23,12 @@ font pango:JetBrains Mono Nerd Font 8, Ionicons 9, Poppins Regular 9
 # Autostart
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# TODO This really needs some customization
 exec --no-startup-id nm-applet
 
-# TODO Study all this stuff up here
 exec --no-startup-id setxkbmap -option caps:escape
 # Bar
 # exec_always exec --no-startup-id ~/.config/polybar/launch.sh
-# TODO rice it a bit
 
 # TODO Setup Bluetooth (blueberry) and Wifi (nmcli) connection stuff
 # TODO sxhkd stuff for pro keybinds
@@ -56,7 +55,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym $mod+Ctrl+i exec --no-startup-id pgrep caffeine && pkill caffeine && notify-send "☕ Caffeine OFF" || (caffeine & notify-send "☕ Caffeine ON")
 # TODO I doubt that caffiene is not working with this
 # TODO Bind some commonly used chrome webapps to keys and set important ones to autostart on start.
-
+# TODO Setup Clipboard manager
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -133,9 +132,6 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# Change focus between tiling / floating windows
-bindsym $mod+Shift+t focus mode_toggle
-
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -146,7 +142,8 @@ set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "9" set $ws10 "10"
+set $ws9 "9"
+set $ws10 "10"
 
 # Switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -206,7 +203,7 @@ exec --no-startup-id feh --bg-scale /home/haxnet/Dotfiles/Wallpapers/minimalist-
 # TODO Picom and Piwall would be nice
 
 # Bar
-
+# Change the bar and add stuff I need (brightness, Wifi, Bluetooth, Time, Volume, Temperature, Battery, performance mode stuff).
 
 bar {
 	status_command i3status

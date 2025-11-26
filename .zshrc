@@ -36,7 +36,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 # ╭──────────────────────────────────────────────╮
 # │ History and Core Options                     │
 # ╰──────────────────────────────────────────────╯
-HISTSIZE=5000
+HISTSIZE=50000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
@@ -87,17 +87,36 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/powerlevel10k_lean.o
 # ╭──────────────────────────────────────────────╮
 # │ Aliases                                      │
 # ╰──────────────────────────────────────────────╯
+# TODO alias (function) for dd command to burn iso to usb
+# TODO some cool aliases from omarchy
+# ---- File Management ---- using /bin/xx instead of xx directly so scripts work fine.
+cdl() { cd "$@" && eza -lh --icons --group-directories-first --color=always | head -n 50; } # auto ls when cd into a dir
+alias cp='/bin/cp -iv'
+alias cpr='/bin/cp -ivr'
+alias mkdir='/bin/mkdir -pv'
+alias mv='/bin/mv -iv'
+alias mvr='/bin/mv -ivr'
+alias rm='/bin/rm -i'
+alias rmf='/bin/rm -rf'
+alias rmb='/bin/mv -t ~/.local/share/Trash/files/'
+
+# ---- eza / ls replacements ----
 alias ls='eza --icons=always'
 alias l='eza -lh --icons --group-directories-first --color=always'
 alias la='eza -a --icons --group-directories-first --color=always'
 alias ll='eza -lah --icons --group-directories-first --color=always'
-alias c='clear'
-alias vim='nvim'
-alias vi='nvim'
-alias lg='lazygit'
+alias lt='eza -T --icons --group-directories-first --color=always'
+
+# ---- Quality of Life ----
+alias i='sudo apt install -y'
 alias ld='lazydocker'
+alias lg='lazygit'
+alias s='BROWSER=w3m ddgr' # Search the browser (DuckDuckgo)
+alias v='nvim'
+
+# ---- Fancy stuff ----
 alias ff='fastfetch --logo debian -c /usr/share/fastfetch/presets/examples/10.jsonc'
-alias ffs='fastfetch -c .local/share/fastfetch/presets/groups.jsonc'
+alias ffs='fastfetch -c ~/.config/fastfetch/fastfetch.jsonc'
 #alias pm='sudo pacman -S'
 #alias pmnc='sudo pacman -S --noconfirm'
 
@@ -127,4 +146,4 @@ oml() {
   oh-my-logo "$*" ocean --filled --letter-spacing 1
 }
 
-ffs
+ff

@@ -42,12 +42,6 @@ install_packages() {
         ffmpeg 7zip unzip jq poppler-utils fd-find ripgrep imagemagick
 }
 
-install_ohmyposh() {
-    echo "==> Installing Oh My Posh"
-    curl -sL https://ohmyposh.dev/install.sh -o "$TEMP_DIR/omp.sh"
-    bash "$TEMP_DIR/omp.sh"
-}
-
 install_pywal() {
     echo "==> Installing Pywal16"
     pipx install pywal16 || true
