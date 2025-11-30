@@ -40,7 +40,7 @@ sudo apt install -y \
   tmux zsh fzf zoxide eza \
   i3 xorg lightdm \
   dbus-x11 libnotify-bin \
-  jq psmisc network-manager \
+  jq psmisc rlwrap network-manager \
   ffmpeg poppler-utils imagemagick calcurse yt-dlp neomutt \
   brightnessctl rsync stow flameshot \
   fastfetch polybar rofi feh \
@@ -175,5 +175,10 @@ cmake -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo
 cd build
 cmake --build .
 sudo cmake --install .
+
+# ----------------------------
+# cheat.sh ()
+# ----------------------------
+curl -s https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh
 
 echo "All done! Reboot recommended."

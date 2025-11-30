@@ -83,8 +83,8 @@ bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 5%-; notif
 bindsym Print exec flameshot gui
 
 # Launch Terminal
-bindsym $mod+Return exec kitty
-bindsym $mod+Shift+Return exec alacritty
+bindsym $mod+Return exec alacritty
+bindsym $mod+Shift+Return exec kitty
 # Kill window
 bindsym $mod+q kill
 
@@ -198,7 +198,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Wallpaper
-exec --no-startup-id feh --bg-scale /home/haxnet/Dotfiles/Wallpapers/minimalist-yello-tree.png
+exec --no-startup-id feh --bg-scale /home/haxnet/Dotfiles/Wallpapers/vibing_kitty.jpg
 # TODO Maybe a cool wallpaper picker
 # TODO Picom and Piwall would be nice
 
