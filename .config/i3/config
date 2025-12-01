@@ -22,12 +22,16 @@ font pango:JetBrains Mono Nerd Font 8, Ionicons 9, Poppins Regular 9
 
 # Autostart
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork 
 # TODO This really needs some customization
 exec --no-startup-id nm-applet
-
-exec --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id xset s off -dpms
+
+# Turn Caps into Ctrl
+exec --no-startup-id setxkbmap -option ctrl:nocaps
+# Make tapping Caps send Escape
+exec --no-startup-id xcape -e 'Control_L=Escape'
+
 # Bar
 # exec_always exec --no-startup-id ~/.config/polybar/launch.sh
 

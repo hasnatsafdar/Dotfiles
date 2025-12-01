@@ -38,7 +38,7 @@ sudo apt install -y \
   python3 python3-pip pipx \
   nodejs npm \
   tmux zsh fzf zoxide eza \
-  i3 xorg lightdm \
+  i3 xorg xcape lightdm \
   dbus-x11 libnotify-bin \
   jq psmisc rlwrap network-manager \
   ffmpeg poppler-utils imagemagick calcurse yt-dlp neomutt \

@@ -113,12 +113,14 @@ alias ll='eza -lah --icons --group-directories-first --color=always'
 alias lt='eza -T --icons --group-directories-first --color=always'
 
 # ---- Quality of Life ----
-alias fzf="fzf --preview='cat {}'"
+alias f="fzf --preview='cat {}'"
 alias i='sudo apt install -y'
 alias ld='lazydocker'
 alias lg='lazygit'
 alias s='BROWSER=w3m ddgr' # Search the browser (DuckDuckgo)
+alias lemmein='ssh haxnethost@192.168.122.143'
 alias v='nvim'
+alias vf='nvim $(f)'
 
 # ---- Fancy stuff ----
 alias ff='fastfetch --logo debian -c /usr/share/fastfetch/presets/examples/10.jsonc'
@@ -128,7 +130,7 @@ alias ffs='fastfetch -c ~/.config/fastfetch/fastfetch.jsonc'
 
 # Keybindings
 #bindkey '`' autosuggest-accept
-bindkey -v
+bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
