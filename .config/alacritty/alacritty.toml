@@ -14,7 +14,7 @@ import = [
 ]
 
 [window]
-decorations = "None"
+#decorations = "None"
 opacity = 1
 
 [window.padding]
@@ -22,7 +22,7 @@ x = 10
 y = 10
 
 [font]
-size = 8.0
+size = 7.0
 
 # [font.normal]
 # family = "JetBrainsMono"
@@ -37,3 +37,4 @@ save_to_clipboard = true
 
 #[terminal.shell]
 #program = "/usr/bin/fish"
+# TODO add image preview usng uzb++ 

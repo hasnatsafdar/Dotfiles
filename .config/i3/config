@@ -27,6 +27,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 exec --no-startup-id setxkbmap -option caps:escape
+exec --no-startup-id xset s off -dpms
 # Bar
 # exec_always exec --no-startup-id ~/.config/polybar/launch.sh
 
@@ -198,7 +199,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Wallpaper
-exec --no-startup-id feh --bg-scale /home/haxnet/Dotfiles/Wallpapers/vibing_kitty.jpg
+exec --no-startup-id feh --bg-scale /home/haxnet/Dotfiles/Wallpapers/the-sparkles.png
 # TODO Maybe a cool wallpaper picker
 # TODO Picom and Piwall would be nice
 
@@ -226,9 +227,9 @@ bar {
 }
 
 # format: client.focused border background text indicator child_border
-client.focused          #E6C200 #000000 #FFD300 #FFD300 #FFD300
-client.focused_inactive #000000 #000000 #FFD300 #000000 #000000
-client.unfocused        #000000 #000000 #FFD300 #000000 #000000
-client.urgent           #FFD300 #000000 #000000 #FFD300 #FFD300
-client.placeholder      #000000 #000000 #FFD300 #000000 #000000
-client.background       #000000
+client.focused          #F5C2E7 #3B384B #3B384B #FFFFFF #F5C2E7
+client.focused_inactive #302D41 #302D41 #302D41 #FFFFFF #302D41
+client.unfocused        #1E1E2E #1E1E2E #1E1E2E #FFFFFF #1E1E2E
+client.urgent           #F38BA8 #302D41 #302D41 #FFFFFF #F38BA8
+client.placeholder      #302D41 #302D41 #302D41 #FFFFFF #302D41
+client.background       #1E1E2E
