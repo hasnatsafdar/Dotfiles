@@ -28,6 +28,10 @@ fi
 PATH="$HOME/.go/bin:$PATH"
 # Created by `pipx`
 export PATH="$PATH:/home/haxnet/.local/bin"
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 1)
+export EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='less'
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
@@ -80,8 +84,9 @@ if ! command -v oh-my-posh >/dev/null 2>&1; then
     sudo mv ~/.local/bin/oh-my-posh /usr/local/bin/oh-my-posh
 fi
 #eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
-#eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/powerlevel10k_lean.omp.json)" 
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/catppuccin_mocha.omp.json)" 
+#eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/powerlevel10k_lean.omp.json)"
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/catppuccin_mocha.omp.json)"
+
 # ╭──────────────────────────────────────────────╮
 # │ Aliases                                      │
 # ╰──────────────────────────────────────────────╯
@@ -89,6 +94,8 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/catppuccin_mocha.omp
 # TODO some cool aliases from omarchy
 # ---- File Management ---- using /bin/xx instead of xx directly so scripts work fine.
 cdl() { cd "$@" && eza -lh --icons --group-directories-first --color=always | head -n 50; } # auto ls when cd into a dir
+alias bat='/bin/batcat'
+alias c='/bin/clear'
 alias cp='/bin/cp -iv'
 alias cpr='/bin/cp -ivr'
 alias mkdir='/bin/mkdir -pv'
@@ -106,6 +113,7 @@ alias ll='eza -lah --icons --group-directories-first --color=always'
 alias lt='eza -T --icons --group-directories-first --color=always'
 
 # ---- Quality of Life ----
+alias fzf="fzf --preview='cat {}'"
 alias i='sudo apt install -y'
 alias ld='lazydocker'
 alias lg='lazygit'
