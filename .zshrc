@@ -93,8 +93,8 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/catppuccin_mocha.omp
 # TODO alias (function) for dd command to burn iso to usb
 # TODO some cool aliases from omarchy
 # ---- Core ---- using /bin/xx instead of xx directly so scripts work fine.
-alias sudo='doas'
-cdl() { cd "$@" && eza -lh --icons --group-directories-first --color=always | head -n 50; } # auto ls when cd into a dir
+# alias sudo='doas'
+cx() { cd "$@" && eza -lh --icons --group-directories-first --color=always | head -n 50; } # auto ls when cd into a dir
 alias bat='/bin/batcat'
 alias c='/bin/clear'
 alias cdy='yazi'
@@ -152,7 +152,7 @@ whoami() {
   oh-my-logo "$name" ocean --filled --letter-spacing 1
 }
 
-oml() {
+ohmylogo() {
   oh-my-logo "$*" ocean --filled --letter-spacing 1
 }
 
