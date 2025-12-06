@@ -92,10 +92,12 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/catppuccin_mocha.omp
 # ╰──────────────────────────────────────────────╯
 # TODO alias (function) for dd command to burn iso to usb
 # TODO some cool aliases from omarchy
-# ---- File Management ---- using /bin/xx instead of xx directly so scripts work fine.
+# ---- Core ---- using /bin/xx instead of xx directly so scripts work fine.
+alias sudo='doas'
 cdl() { cd "$@" && eza -lh --icons --group-directories-first --color=always | head -n 50; } # auto ls when cd into a dir
 alias bat='/bin/batcat'
 alias c='/bin/clear'
+alias cdy='yazi'
 alias cp='/bin/cp -iv'
 alias cpr='/bin/cp -ivr'
 alias mkdir='/bin/mkdir -pv'
@@ -119,17 +121,17 @@ alias ld='lazydocker'
 alias lg='lazygit'
 alias s='BROWSER=w3m ddgr' # Search the browser (DuckDuckgo)
 alias lemmein='ssh haxnethost@192.168.122.143'
+alias mpvyt="mpv --quiet --msg-level=all=no --ytdl-format='bestvideo[height<=720]+bestaudio/best[height<=720]' --hwdec=auto --profile=fast "
 alias v='nvim'
 alias vf='nvim $(f)'
 
 # ---- Fancy stuff ----
-alias ff='fastfetch --logo debian -c /usr/share/fastfetch/presets/examples/10.jsonc'
+alias ff='fastfetch --logo nixos -c /usr/share/fastfetch/presets/examples/10.jsonc'
 alias ffs='fastfetch -c ~/.config/fastfetch/fastfetch.jsonc'
 #alias pm='sudo pacman -S'
 #alias pmnc='sudo pacman -S --noconfirm'
 
 # Keybindings
-#bindkey '`' autosuggest-accept
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward

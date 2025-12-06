@@ -4,8 +4,8 @@ set -euo pipefail
 
 # Ask to run with sudo if not already
 if [[ $EUID -ne 0 ]]; then
-    echo "Run this script with: sudo $0"
-    exit 1
+  echo "Run this script with: sudo $0"
+  exit 1
 fi
 
 USER_HOME=$(eval echo "~$SUDO_USER")
@@ -43,7 +43,7 @@ sudo apt install -y \
   jq psmisc rlwrap network-manager \
   ffmpeg poppler-utils imagemagick calcurse yt-dlp neomutt \
   brightnessctl rsync stow flameshot \
-  fastfetch polybar rofi feh \
+  fastfetch polybar rofi sxiv \
   mpv qutebrowser ddgr w3m thunar \
   rxvt-unicode xsel lxappearance scrot caffeine \
   pipewire pipewire-audio-client-libraries wireplumber pipewire-pulse pulseaudio-utils \
@@ -74,8 +74,8 @@ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o 
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
 
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
-https://download.docker.com/linux/debian $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+https://download.docker.com/linux/debian $(. /etc/os-release && echo "$VERSION_CODENAME") stable" |
+  sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
 
 sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
@@ -134,7 +134,8 @@ wget https://github.com/neovim/neovim/releases/download/v0.11.4/nvim-linux-x86_6
 mv nvim-linux-x86_64.appimage nvim
 chmod +x nvim
 sudo mv nvim /usr/local/bin
-git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
+#git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
+git clone https://github.com/LazyVim/starter ~/.config/nvim
 
 # ----------------------------
 # NPM Fancy Stuff
@@ -182,3 +183,8 @@ sudo cmake --install .
 curl -s https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh
 
 echo "All done! Reboot recommended."
+
+# Kanata
+wget https://github.com/jtroo/kanata/releases/download/v1.10.0/linux-binaries-x64-v1.10.0.zip
+unzip linux-binaries-x64-v1.10.0.zip
+mv kanata_linux_x64 ~/.local/bin/

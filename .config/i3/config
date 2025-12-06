@@ -26,11 +26,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # TODO This really needs some customization
 exec --no-startup-id nm-applet
 exec --no-startup-id xset s off -dpms
-
-# Turn Caps into Ctrl
-exec --no-startup-id setxkbmap -option ctrl:nocaps
-# Make tapping Caps send Escape
-exec --no-startup-id xcape -e 'Control_L=Escape'
+# TODO use kanata or whatever
 
 # Bar
 # exec_always exec --no-startup-id ~/.config/polybar/launch.sh
@@ -70,7 +66,7 @@ default_floating_border pixel 3
 hide_edge_borders smart
 
 # Browser
-bindsym $mod+b exec --no-startup-id LibreWolf
+bindsym $mod+b exec --no-startup-id librewolf
 bindsym $mod+Shift+b exec --no-startup-id qutebrowser
 bindsym $mod+Shift+Ctrl+b exec --no-startup-id flatpak run com.google.Chrome
 
@@ -96,8 +92,12 @@ bindsym $mod+q kill
 # App Launcher
 bindsym $mod+d exec i3-dmenu-desktop --dmenu="dmenu -i -b \
     -fn 'JetBrainsMono Nerd Font:size=10' \
-    -nb '#000000' -nf '#FFEA00' \
-    -sb '#FFEA00' -sf '#000000'"
+    -nb '#1e1e2e' -nf '#cdd6f4' \
+    -sb '#cba6f7' -sf '#1e1e2e'"
+# bindsym $mod+d exec i3-dmenu-desktop --dmenu="dmenu -i -b \
+#     -fn 'JetBrainsMono Nerd Font:size=10' \
+#     -nb '#000000' -nf '#FFEA00' \
+#     -sb '#FFEA00' -sf '#000000'"
 
 #bindcode $mod+40 exec "rofi -modi drun,run -show drun -show-icons"
 #bindsym $mod+d exec "rofi -show drun -modi drun,run -show-icons -font 'Poppins 9' -color-window '#141c21,#93a1a1,#289c93' -color-normal '#141c21,#93a1a1,#141c21,#93a1a1,#289c93' -lines 10 -bw 0 -padding 10"
