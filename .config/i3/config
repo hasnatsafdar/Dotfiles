@@ -26,6 +26,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # TODO This really needs some customization
 exec --no-startup-id nm-applet
 exec --no-startup-id xset s off -dpms
+
+# Start Picom as a background daemon with its config file
+exec_always --no-startup-id picom -b
 # TODO use kanata or whatever
 
 # Bar
@@ -41,7 +44,7 @@ exec --no-startup-id dbus-launch dunst
 # Gaps
 gaps inner 8px
 gaps outer 8px
-smart_gaps on
+#smart_gaps on
 
 # Use pactl to adjust volume in Pipewire.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -61,8 +64,8 @@ bindsym $mod+Ctrl+i exec --no-startup-id pgrep caffeine && pkill caffeine && not
 floating_modifier $mod
 
 # Hide borders
-default_border pixel 3
-default_floating_border pixel 3
+default_border pixel 0
+default_floating_border pixel 0
 hide_edge_borders smart
 
 # Browser
@@ -71,7 +74,10 @@ bindsym $mod+Shift+b exec --no-startup-id qutebrowser
 bindsym $mod+Shift+Ctrl+b exec --no-startup-id flatpak run com.google.Chrome
 
 # Docs & notes stuff
-bindsym $mod+n exec obsidian
+bindsym $mod+o  exec --no-startup-id obsidian
+bindsym $mod+n exec --no-startup-id alacritty -e nvim
+
+bindsym $mod+p exec --no-startup-id alacritty -e btop
 
 # Brightness (brightnessctl)
 bindsym XF86MonBrightnessUp exec --no-startup-id "brightnessctl set +5%; notify-send 'brightness up'"
@@ -90,17 +96,13 @@ bindsym $mod+Shift+Return exec kitty
 bindsym $mod+q kill
 
 # App Launcher
-bindsym $mod+d exec i3-dmenu-desktop --dmenu="dmenu -i -b \
-    -fn 'JetBrainsMono Nerd Font:size=10' \
-    -nb '#1e1e2e' -nf '#cdd6f4' \
-    -sb '#cba6f7' -sf '#1e1e2e'"
 # bindsym $mod+d exec i3-dmenu-desktop --dmenu="dmenu -i -b \
 #     -fn 'JetBrainsMono Nerd Font:size=10' \
-#     -nb '#000000' -nf '#FFEA00' \
-#     -sb '#FFEA00' -sf '#000000'"
-
-#bindcode $mod+40 exec "rofi -modi drun,run -show drun -show-icons"
-#bindsym $mod+d exec "rofi -show drun -modi drun,run -show-icons -font 'Poppins 9' -color-window '#141c21,#93a1a1,#289c93' -color-normal '#141c21,#93a1a1,#141c21,#93a1a1,#289c93' -lines 10 -bw 0 -padding 10"
+#     -nb '#1e1e2e' -nf '#cdd6f4' \
+#     -sb '#cba6f7' -sf '#1e1e2e'"
+bindcode $mod+40 exec "rofi -modi drun,run -show drun -show-icons"
+# TODO setup script to launch power menu (logout, restart, poweroff etc)
+bindsym $mod+x exec --no-startup-id ~/.config/rofi/powermenu.sh
 
 # Change focus
 bindsym $mod+h focus left
@@ -137,11 +139,15 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
+#assign [class="Alacritty"] $ws1
+assign [class="librewolf"] $ws2
+assign [class="obsidian"] $ws3
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
+set $ws1 "1:"
+set $ws2 "2:󰖟"
+set $ws3 "3:󰎚 "
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
@@ -181,7 +187,7 @@ bindsym $mod+Shift+c reload
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # Rxit i3 (logs you out of your X session)
-bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+ctrl+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Resize window (you can also use the mouse for that)
 mode "resize" {
@@ -202,10 +208,11 @@ mode "resize" {
 # Enter resize mode
 bindsym $mod+r mode "resize"
 
+bindsym $mod+shift+x exec betterlockscreen -l dim
 # Wallpaper
-exec --no-startup-id feh --bg-scale /home/haxnet/Dotfiles/Wallpapers/the-sparkles.png
-# TODO Maybe a cool wallpaper picker
-# TODO Picom and Piwall would be nice
+#
+exec --no-startup-id feh --bg-scale /home/haxnet/Dotfiles/Wallpapers/blue-forest-art.png
+# TODO Piwall would be nice
 
 # Bar
 # Change the bar and add stuff I need (brightness, Wifi, Bluetooth, Time, Volume, Temperature, Battery, performance mode stuff).
@@ -231,9 +238,10 @@ bar {
 }
 
 # format: client.focused border background text indicator child_border
-client.focused          #F5C2E7 #3B384B #3B384B #FFFFFF #F5C2E7
-client.focused_inactive #302D41 #302D41 #302D41 #FFFFFF #302D41
-client.unfocused        #1E1E2E #1E1E2E #1E1E2E #FFFFFF #1E1E2E
-client.urgent           #F38BA8 #302D41 #302D41 #FFFFFF #F38BA8
-client.placeholder      #302D41 #302D41 #302D41 #FFFFFF #302D41
-client.background       #1E1E2E
+
+client.focused          #00E5FF #000000 #000000 #FFFFFF #00C4E6
+client.focused_inactive #0A0A0A #0A0A0A #0A0A0A #FFFFFF #0A0A0A
+client.unfocused        #000000 #000000 #000000 #FFFFFF #000000
+client.urgent           #FF0044 #000000 #000000 #FFFFFF #FF0044
+client.placeholder      #0A0A0A #0A0A0A #0A0A0A #FFFFFF #0A0A0A
+client.background       #000000

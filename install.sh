@@ -44,11 +44,12 @@ sudo apt install -y \
   ffmpeg poppler-utils imagemagick calcurse yt-dlp neomutt \
   brightnessctl rsync stow flameshot \
   fastfetch polybar rofi sxiv \
-  mpv qutebrowser ddgr w3m thunar \
+  zathura mpv qutebrowser ddgr w3m thunar \
   rxvt-unicode xsel lxappearance scrot caffeine \
   pipewire pipewire-audio-client-libraries wireplumber pipewire-pulse pulseaudio-utils \
   obs-studio gimp
 
+xdg-mime default org.pwmt.zathura.desktop application/pdf
 systemctl --user enable --now pipewire pipewire-pulse wireplumber
 
 # ----------------------------

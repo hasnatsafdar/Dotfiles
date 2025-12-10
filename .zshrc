@@ -25,15 +25,28 @@ if [ ! -d "$ZINIT_HOME" ]; then
 	git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
+# Source/Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
+# --- #
 PATH="$HOME/.go/bin:$PATH"
+
+# My extra stuff
 # Created by `pipx`
 export PATH="$PATH:/home/haxnet/.local/bin"
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
+
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 1)
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PAGER='less'
-# Source/Load zinit
-source "${ZINIT_HOME}/zinit.zsh"
+
+# Nix Home-Manager
+source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+
+# node-v24
+export PATH="/home/haxnet/Downloads/node-v24.11.1-linux-x64/bin:$PATH"
 
 # ╭──────────────────────────────────────────────╮
 # │ History and Core Options                     │
@@ -49,6 +62,7 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
+setopt AUTO_CD
 
 # ╭──────────────────────────────────────────────╮
 # │ Plugins                                      │
@@ -94,7 +108,9 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/catppuccin_mocha.omp
 # TODO some cool aliases from omarchy
 # ---- Core ---- using /bin/xx instead of xx directly so scripts work fine.
 # alias sudo='doas'
-cx() { cd "$@" && eza -lh --icons --group-directories-first --color=always | head -n 50; } # auto ls when cd into a dir
+cx() { cd "$@" && eza -lh --group-directories-first --icons --color=always | head -n 50; } # auto ls when cd into a dir
+alias ..='cd ..'
+alias ...='cd ../..'
 alias bat='/bin/batcat'
 alias c='/bin/clear'
 alias cdy='yazi'
@@ -156,4 +172,22 @@ ohmylogo() {
   oh-my-logo "$*" ocean --filled --letter-spacing 1
 }
 
-ff
+if [[ ! -f /dev/shm/fetchblock ]]
+then
+    touch /dev/shm/fetchblock
+    ff
+fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/haxnet/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/haxnet/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/haxnet/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/haxnet/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
