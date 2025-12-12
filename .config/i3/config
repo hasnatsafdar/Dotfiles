@@ -69,15 +69,16 @@ default_floating_border pixel 0
 hide_edge_borders smart
 
 # Browser
-bindsym $mod+b exec --no-startup-id librewolf
-bindsym $mod+Shift+b exec --no-startup-id qutebrowser
+bindsym $mod+b exec --no-startup-id vivaldi
+bindsym $mod+Shift+b exec --no-startup-id librewolf
 bindsym $mod+Shift+Ctrl+b exec --no-startup-id flatpak run com.google.Chrome
 
 # Docs & notes stuff
 bindsym $mod+o  exec --no-startup-id obsidian
 bindsym $mod+n exec --no-startup-id alacritty -e nvim
-
 bindsym $mod+p exec --no-startup-id alacritty -e btop
+bindsym $mod+e exec --no-startup-id alacritty -e yazi
+bindsym $mod+Shift+e exec --no-startup-id alacritty -e sudo yazi
 
 # Brightness (brightnessctl)
 bindsym XF86MonBrightnessUp exec --no-startup-id "brightnessctl set +5%; notify-send 'brightness up'"
@@ -135,19 +136,18 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+t floating toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+s layout toggle split
 
 #assign [class="Alacritty"] $ws1
-assign [class="librewolf"] $ws2
+assign [class="vivaldi"] $ws2
 assign [class="obsidian"] $ws3
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1:"
 set $ws2 "2:󰖟"
-set $ws3 "3:󰎚 "
+set $ws3 "3:󰎚"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
