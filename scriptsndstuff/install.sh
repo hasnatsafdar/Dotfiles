@@ -183,9 +183,9 @@ sudo cmake --install .
 # ----------------------------
 curl -s https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh
 
-echo "All done! Reboot recommended."
-
 # Kanata
 wget https://github.com/jtroo/kanata/releases/download/v1.10.0/linux-binaries-x64-v1.10.0.zip
 unzip linux-binaries-x64-v1.10.0.zip
 mv kanata_linux_x64 ~/.local/bin/
+
+echo "All done! Reboot recommended."
