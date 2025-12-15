@@ -1,94 +1,84 @@
-
 configuration {
-  combi-modi: "drun";
-  font: "JetBrains Mono 14";
-  width: 900px;
-      border-color: #2e343f;
-   show-icons: true;
-  icon-theme: "Papirus";
-    display-drun: "";
-  drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
-  location: 0;
-    sidebar-mode: false;
+  show-icons: false;
+  display-drun: "drun";
+  disable-history: false;
 }
 
-
- @theme "slate"
-/* Dark theme. */
-
-
 * {
-  background-color: @bg;
-  border-color: #2e343f;
-  text-color: #8ca0aa;
-  spacing: 0;
-  width: 1000px;
-  font: "JetBrains Mono 14";
-  vertical-align: 0.5;
-  show-icons: true;
-  icon-theme: "Papirus";
-  drun-display-format: "{name}";
+  font: "JetBrains Mono SemiBold 12";
+  background: #141b1e;
+  foreground: #dadada;
+  primary: #67b0e8;
+  secondary: #8ccf7e;
+  urgent: #e57474;
+}
 
+window {
+  width: 480px;
+  padding: 0px;
+  border: 0px;
+  background-color: @background;
 }
 
 inputbar {
-  border: 0 0 1px 0;
-  children: [entry];
-  background-color:@win-bg;
-}
-
-prompt {
-  padding: 16px;
-  border: 0 1px 0 0;
-
-}
-
-textbox {
-
-  border: 0 0 1px 0;
-  border-color: #282C33;
-  padding: 8px 16px;
+  spacing: 8px;
+  padding: 48px 16px;
+  text-color: @foreground;
+  background-color: transparent;
+  background-image: url("~/.config/rofi/images/lighthouse.png", width);
+  children: [ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
 
 entry {
-  padding: 16px;
+  enabled: true;
+  placeholder: "";
+  expand: false;
+  width: 256px;
+  padding: 12px 24px;
+  border-radius: 64px;
+  background-color: @background;
+  text-color: @foreground;
+}
+
+prompt {
+  padding: 12px 16px;
+  border-radius: 64px;
+  background-color: @background;
+  text-color: @secondary;
+}
+mainbox {
+  border:  0;
+  padding: 0;
+}
+
+textbox {
+  text-color: @foreground;
+}
+
+textbox-prompt-colon {
+  enabled: false;
 }
 
 listview {
-  cycle: false;
-  margin: 0 0 -1px 0;
-  scrollbar: true;
+  lines: 8;
+  fixed-height: true;
+  scrollbar: false;
+  spacing: 0;
+  padding: 16px;
+  border: 0;
 }
 
 element {
-  border: 0 0 1px 0;
-  padding: 0px;
-  children: [element-icon, element-text];
+  padding: 8px 16px 8px 16px;
+  border: 0;
 }
 
-element selected.active {
-   background-color: @bg;
-   text-color: @selected-fg;
+element.selected.normal {
+  background-color: @primary;
+  text-color: @background;
 }
 
-element selected.normal {
-    background-color: @selected-bg;
-
+element.alternate.normal {
+  background-color: @background;
+  text-color: @foreground;
 }
-
-element-icon {
-  size: 4ch ;
-  padding: 10px;
- }
-
-element selected {
-  background-color: @bg;
-}
-
-
-
-
-
-window {
-        height: 60%;
-    }
