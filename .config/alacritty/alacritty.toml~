@@ -1,0 +1,30 @@
+[general]
+import = [
+   "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[window]
+#decorations = "None"
+opacity = 0.95
+
+[window.padding]
+x = 10
+y = 10
+
+[font]
+size = 10.0
+
+# [font.normal]
+# family = "JetBrainsMono"
+# style = "Regular"
+
+[cursor.style]
+shape = "Block"
+blinking = "Always"
+
+[selection]
+save_to_clipboard = true
+
+#[terminal.shell]
+#program = "/usr/bin/fish"
+# TODO add image preview usng uzb++ 
