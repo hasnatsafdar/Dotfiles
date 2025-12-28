@@ -37,7 +37,7 @@ exec_always --no-startup-id picom -b
 # TODO Setup Bluetooth (blueberry) and Wifi (nmcli) connection stuff
 # TODO sxhkd stuff for pro keybinds
 #Notification
-exec --no-startup-id dbus-launch dunst
+exec_always --no-startup-id dbus-launch dunst
 #exec --no-startup-id xrandr --output DP-0 --mode 1920x1080
 # TODO exec on boot the todo app, the calender and the email.
 
@@ -69,7 +69,7 @@ default_floating_border pixel 0
 hide_edge_borders smart
 
 # Browser
-bindsym $mod+b exec --no-startup-id vivaldi
+bindsym $mod+b exec --no-startup-id ~/Downloads/zen/./zen 
 bindsym $mod+Shift+b exec --no-startup-id librewolf
 bindsym $mod+Shift+Ctrl+b exec --no-startup-id flatpak run com.google.Chrome
 

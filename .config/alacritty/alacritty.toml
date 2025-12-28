@@ -5,14 +5,14 @@ import = [
 
 [window]
 #decorations = "None"
-#opacity = 0.9
+opacity = 0.9
 
 [window.padding]
 x = 10
 y = 10
 
 [font]
-size = 7.0
+size = 10.0
 
 # [font.normal]
 # family = "JetBrainsMono"

@@ -10,11 +10,6 @@ fi
 
 USER_HOME=$(eval echo "~$SUDO_USER")
 
-### Versions & Variables
-LOCALSEND_VERSION="1.17.0"
-NEOVIM_VERSION="v0.11.4"
-OBSIDIAN_VERSION="1.9.14"
-
 FONTS_DIR="$USER_HOME/.local/share/fonts"
 TEMP_DIR="/tmp/setup-downloads"
 
@@ -32,23 +27,24 @@ sudo apt update && sudo apt upgrade -y
 # Core Packages
 # ----------------------------
 echo "Installing core packages..."
-sudo apt install -y \
-  build-essential git lazygit wget curl unzip 7zip cmake \
+sudo pacman -S -y \
+  git lazygit wget curl unzip cmake \
   fd-find ripgrep ncdu tealdeer hsetroot btop \
-  python3 python3-pip pipx \
+  python3 \
   nodejs npm \
   tmux zsh fzf zoxide eza \
-  i3 xorg xcape lightdm \
+  i3 xorg ly \
   bluez bluez-utils \
   dbus-x11 libnotify-bin \
-  jq psmisc rlwrap network-manager \
-  ffmpeg poppler-utils imagemagick calcurse yt-dlp neomutt \
-  brightnessctl rsync stow flameshot \
-  fastfetch polybar rofi sxiv \
+  network-manager \
+  ffmpeg yt-dlp \
+  brightnessctl stow flameshot \
+  fastfetch polybar rofi \
   zathura mpv qutebrowser ddgr w3m thunar \
-  rxvt-unicode xsel lxappearance scrot caffeine \
+  xsel lxappearance \
   pipewire pipewire-audio-client-libraries wireplumber pipewire-pulse pulseaudio-utils \
-  obs-studio gimp
+
+yay -S zen-browser pacseek ttf-jetbrains-mono-nerd kanata localsend \
 
 xdg-mime default org.pwmt.zathura.desktop application/pdf
 systemctl --user enable --now pipewire pipewire-pulse wireplumber
@@ -62,13 +58,6 @@ sudo systemctl start bluetooth.service
 # ----------------------------
 pipx install pywal16
 pipx ensurepath
-
-# ----------------------------
-# LocalSend
-# ----------------------------
-echo "Installing LocalSend..."
-wget https://github.com/localsend/localsend/releases/download/v1.17.0/LocalSend-1.17.0-linux-x86-64.deb
-sudo apt install ./LocalSend-1.17.0-linux-x86-64.deb
 
 # ----------------------------
 # Docker
