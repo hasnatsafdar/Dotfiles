@@ -10,26 +10,20 @@ fi
 
 USER_HOME=$(eval echo "~$SUDO_USER")
 
-FONTS_DIR="$USER_HOME/.local/share/fonts"
-TEMP_DIR="/tmp/setup-downloads"
-
-mkdir -p "$TEMP_DIR"
-mkdir -p "$FONTS_DIR"
-
 echo "==> Starting system setup..."
 # ----------------------------
 # System Update
 # ----------------------------
 echo "Updating your system..."
-sudo apt update && sudo apt upgrade -y
+sudo pacman -Syu
 
 # ----------------------------
-# Core Packages
+# Packages
 # ----------------------------
 echo "Installing core packages..."
 sudo pacman -S -y \
-  git lazygit wget curl unzip cmake \
-  fd-find ripgrep ncdu tealdeer hsetroot btop \
+  git neovim lazygit lazydocker wget curl unzip cmake \
+  fd-find ripgrep ncdu tealdeer hsetroot btop yazi \
   python3 \
   nodejs npm \
   tmux zsh fzf zoxide eza \
@@ -45,19 +39,13 @@ sudo pacman -S -y \
   pipewire pipewire-audio-client-libraries wireplumber pipewire-pulse pulseaudio-utils \
 
 yay -S zen-browser pacseek ttf-jetbrains-mono-nerd kanata localsend \
+  python-pywal16 obsidian
 
 xdg-mime default org.pwmt.zathura.desktop application/pdf
 systemctl --user enable --now pipewire pipewire-pulse wireplumber
 
 sudo systemctl enable bluetooth.service
 sudo systemctl start bluetooth.service
-
-
-# ----------------------------
-# Python Tools
-# ----------------------------
-pipx install pywal16
-pipx ensurepath
 
 # ----------------------------
 # Docker
@@ -77,60 +65,11 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 sudo usermod -aG docker $USER
 
 # ----------------------------
-# Lazydocker
-# ----------------------------
-echo "Installing Lazydocker..."
-curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
-sudo mv ~/.local/bin/lazydocker /usr/local/bin/lazydocker
-
-# ----------------------------
 # Flatpak
 # ----------------------------
 echo "Setting up Flatpak..."
 sudo apt install -y flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-# ----------------------------
-# LibreWolf Browser
-# ----------------------------
-echo "Installing LibreWolf..."
-sudo apt update && sudo apt install -y extrepo
-sudo extrepo enable librewolf
-sudo apt update && sudo apt install -y librewolf
-
-# ----------------------------
-# Chrome Browser
-# ----------------------------
-echo "Installing Google Chrome..."
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install ./google-chrome-stable_current_amd64.deb
-
-# ----------------------------
-# Obsidian
-# ----------------------------
-echo "Installing Obsidian..."
-wget https://github.com/obsidianmd/obsidian-releases/releases/download/v1.9.14/obsidian_1.9.14_amd64.deb
-sudo apt install ./obsidian_1.9.14_amd64.deb
-
-# ----------------------------
-# Yazi
-# ----------------------------
-echo "Installing Yazi..."
-curl -sS https://debian.griffo.io/EA0F721D231FDD3A0A17B9AC7808B4DD62C41256.asc | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/debian.griffo.io.gpg
-echo "deb https://debian.griffo.io/apt $(lsb_release -sc 2>/dev/null) main" | sudo tee /etc/apt/sources.list.d/debian.griffo.io.list
-sudo apt update
-sudo apt install -y yazi
-
-# ----------------------------
-# Neovim & LazyVim
-# ----------------------------
-echo "Installing Neovim & LazyVim..."
-wget https://github.com/neovim/neovim/releases/download/v0.11.4/nvim-linux-x86_64.appimage
-mv nvim-linux-x86_64.appimage nvim
-chmod +x nvim
-sudo mv nvim /usr/local/bin
-#git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
-git clone https://github.com/LazyVim/starter ~/.config/nvim
 
 # ----------------------------
 # NPM Fancy Stuff
@@ -162,24 +101,4 @@ sudo usermod -aG kvm $USER
 sudo usermod -aG input $USER
 sudo usermod -aG disk $USER
 
-# ----------------------------
-# Transmission
-# ----------------------------
-git clone --recurse-submodules https://github.com/transmission/transmission Transmission
-cd Transmission
-cmake -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo
-cd build
-cmake --build .
-sudo cmake --install .
-
-# ----------------------------
-# cheat.sh ()
-# ----------------------------
-curl -s https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x /usr/local/bin/cht.sh
-
 echo "All done! Reboot recommended."
-
-# Kanata
-wget https://github.com/jtroo/kanata/releases/download/v1.10.0/linux-binaries-x64-v1.10.0.zip
-unzip linux-binaries-x64-v1.10.0.zip
-mv kanata_linux_x64 ~/.local/bin/

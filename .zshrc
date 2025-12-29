@@ -121,9 +121,8 @@ alias cpr='/bin/cp -ivr'
 alias mkdir='/bin/mkdir -pv'
 alias mv='/bin/mv -iv'
 alias mvr='/bin/mv -ivr'
-alias rm='/bin/rm -i'
+alias rm='/bin/mv -t ~/.local/share/Trash/files/'
 alias rmf='/bin/rm -rf'
-alias rmb='/bin/mv -t ~/.local/share/Trash/files/'
 
 # ---- eza / ls replacements ----
 alias ls='eza --icons=always'
