@@ -22,7 +22,7 @@ sudo pacman -Syu
 # ----------------------------
 echo "Installing core packages..."
 sudo pacman -S -y \
-  git neovim lazygit lazydocker wget curl unzip cmake \
+  git neovim lazygit lazydocker wget curl unzip cmake less \
   fd-find ripgrep ncdu tealdeer hsetroot btop yazi \
   python3 \
   nodejs npm \
@@ -34,12 +34,21 @@ sudo pacman -S -y \
   ffmpeg yt-dlp \
   brightnessctl stow flameshot \
   fastfetch polybar rofi \
-  zathura mpv qutebrowser ddgr w3m thunar \
+  zathura mpd mpv qutebrowser ddgr w3m thunar \
   xsel lxappearance \
-  pipewire pipewire-audio-client-libraries wireplumber pipewire-pulse pulseaudio-utils \
+  pipewire pipewire-audio-client-libraries wireplumber pipewire-pulse pulseaudio-utils
 
-yay -S zen-browser pacseek ttf-jetbrains-mono-nerd kanata localsend \
+# AUR Helper
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+rm -rf paru
+
+paru -S zen-browser pacseek ttf-jetbrains-mono-nerd kanata localsend \
   python-pywal16 obsidian
+
+# Tmux Plugin Manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 xdg-mime default org.pwmt.zathura.desktop application/pdf
 systemctl --user enable --now pipewire pipewire-pulse wireplumber
@@ -76,16 +85,6 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 # ----------------------------
 echo "Installing global npm packages..."
 npm install -g oh-my-logo
-
-# ----------------------------
-# Fonts (JetBrainsMono Nerd)
-# ----------------------------
-echo "Installing Nerd Fonts..."
-wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
-cd ~/.local/share/fonts
-unzip JetBrainsMono.zip
-rm JetBrainsMono.zip
-fc-cache -fv
 
 # ----------------------------
 # VM Stuff (QEMU, Libvirt, Virt-Manager)
