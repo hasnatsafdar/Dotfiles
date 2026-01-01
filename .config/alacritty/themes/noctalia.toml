@@ -1,33 +1,33 @@
-# Colors (Ayu)
+# Colors (Gruvbox Dark)
 
 [colors.bright]
-black = '#686868'
-blue = '#59c2ff'
-cyan = '#95e6cb'
-green = '#aad94c'
-magenta = '#d2a6ff'
-red = '#f07178'
-white = '#ffffff'
-yellow = '#ffb454'
+black = '#928374'
+blue = '#83a598'
+cyan = '#8ec07c'
+green = '#b8bb26'
+magenta = '#d3869b'
+red = '#fb4934'
+white = '#ebdbb2'
+yellow = '#fabd2f'
 
 [colors.cursor]
-cursor = '#e6b450'
-text = '#0b0e14'
+cursor = '#ebdbb2'
+text = '#282828'
 
 [colors.normal]
-black = '#11151c'
-blue = '#53bdfa'
-cyan = '#90e1c6'
-green = '#7fd962'
-magenta = '#cda1fa'
-red = '#ea6c73'
-white = '#c7c7c7'
-yellow = '#f9af4f'
+black = '#282828'
+blue = '#458588'
+cyan = '#689d6a'
+green = '#98971a'
+magenta = '#b16286'
+red = '#cc241d'
+white = '#a89984'
+yellow = '#d79921'
 
 [colors.primary]
-background = '#0b0e14'
-foreground = '#bfbdb6'
+background = '#282828'
+foreground = '#ebdbb2'
 
 [colors.selection]
-background = '#409fff'
-text = '#0b0e14'
+background = '#665c54'
+text = '#ebdbb2'

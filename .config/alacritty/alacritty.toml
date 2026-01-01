@@ -1,11 +1,12 @@
 [general]
-import = [
-   "~/.config/alacritty/catppuccin-mocha.toml"
-]
+import = ["themes/noctalia.toml"]
+# import = [
+#    "~/.config/alacritty/catppuccin-mocha.toml"
+#]
 
 [window]
 #decorations = "None"
-opacity = 0.8
+opacity = 0.9
 
 [window.padding]
 x = 10
