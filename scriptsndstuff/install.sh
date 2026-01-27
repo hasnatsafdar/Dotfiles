@@ -193,4 +193,4 @@ echo "All done! Reboot recommended."
 # Kanata
 wget https://github.com/jtroo/kanata/releases/download/v1.10.0/linux-binaries-x64-v1.10.0.zip
 unzip linux-binaries-x64-v1.10.0.zip
-mv kanata_linux_x64 ~/.local/bin/
+sudo mv kanata_linux_x64 /usr/local/bin/kanata
